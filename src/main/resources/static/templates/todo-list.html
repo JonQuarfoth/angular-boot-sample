@@ -1,0 +1,34 @@
+<div class="todo-list">
+
+    <h1>Todo List</h1>
+
+    <ul class="todo-list-items">
+
+        <li class="todo-list-item filters">
+            <i class="fa fa-lg fa-filter"></i>
+            <div class="filter" ng-repeat="(name, filter) in $ctrl.filters">
+                <input ng-attr-id="filter-{{name}}" type="radio" ng-model="$ctrl.filter" ng-value="filter">
+                <label ng-attr-for="filter-{{name}}" class="filter-label" ng-bind="name"></label>
+            </div>
+        </li>
+        <li class="todo-list-item">
+            <form class="todo">
+                <i class="fa fa-lg fa-plus-square-o"></i>
+                <input class="todo-task" type="text" ng-model="$ctrl.addTask" placeholder="What needs doing?">
+                <button ng-click="$ctrl.createTodo()" ng-disabled="!$ctrl.addTask">Add Task</button>
+            </form>
+        </li>
+        <li ng-if="$ctrl.todos.length === 0" class="empty">
+            <i class="fa fa-lg fa-exclamation"></i>
+            <span>This todo list is empty. Add some tasks!</span>
+        </li>
+        <li class="todo-list-item"
+            ng-repeat="todo in ($ctrl.todos | filter: $ctrl.filter) track by todo.id">
+            <todo value="todo"
+                  on-update="$ctrl.updateTodo(todo)"
+                  on-delete="$ctrl.deleteTodo(todo)">
+            </todo>
+        </li>
+    </ul>
+
+</div>

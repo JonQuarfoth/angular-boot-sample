@@ -1,0 +1,16 @@
+<div class="todo" ng-attr-id="todo-{{$ctrl.todo.id}}">
+    <div class="todo-check"
+         ng-click="$ctrl.checkboxToggle()">
+        <i ng-show="$ctrl.todo.done" class="fa fa-lg fa-check-square-o"></i>
+        <i ng-hide="$ctrl.todo.done" class="fa fa-lg fa-square-o"></i>
+    </div>
+    <span class="todo-task"
+           ng-class="{'done': $ctrl.todo.done}"
+           ng-attr-for="task-{{$ctrl.todo.id}}"
+           ng-bind="$ctrl.todo.task">
+    </span>
+    <i class="todo-trash fa fa-lg fa-trash"
+          ng-click="$ctrl.onDelete()"
+          ng-class="">
+    </i>
+</div>

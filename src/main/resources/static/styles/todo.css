@@ -1,0 +1,105 @@
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1.25em;
+    margin: 0 auto;
+    max-width: 600px;
+    min-width: 320px;
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.todo-list-items {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: flex-start;
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-list-items > li {
+    list-style:none;
+    width: 100%;
+
+    border: 3px solid #DDDDDD;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.todo-list-items > li:hover {
+    border-color: #BBBBBB;
+}
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.filter {
+    text-transform: capitalize;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.list-add {
+
+}
+
+.todo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.todo:hover {
+    border-color: #CCCCCC;
+}
+
+.todo > * {
+    padding: 0 5px;
+}
+
+.todo-check {
+    cursor: pointer;
+}
+
+.todo-check:hover {
+    color: green;
+}
+
+.todo-task {
+    flex-grow: 1;
+
+}
+
+input.todo-task {
+    margin-right: 10px;
+    height: 2em;
+}
+
+.todo-task.done {
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+.todo-trash {
+    cursor: pointer;
+}
+
+.todo-trash:hover {
+    color: red;
+}
+
+i.fa {
+    min-width: 20px;
+}
