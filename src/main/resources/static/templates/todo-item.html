@@ -1,16 +1,41 @@
 <div class="todo" ng-attr-id="todo-{{$ctrl.todo.id}}">
-    <div class="todo-check"
-         ng-click="$ctrl.checkboxToggle()">
-        <i ng-show="$ctrl.todo.done" class="fa fa-lg fa-check-square-o"></i>
-        <i ng-hide="$ctrl.todo.done" class="fa fa-lg fa-square-o"></i>
-    </div>
+
+    <!-- display mode -->
+    <i class="todo-check fa fa-btn fa-fw fa-lg"
+       ng-class="{'fa-check-square done': $ctrl.todo.done, 'fa-square-o': !$ctrl.todo.done}"
+       ng-if="!$ctrl.editMode"
+       ng-click="$ctrl.checkboxToggle()">
+    </i>
     <span class="todo-task"
-           ng-class="{'done': $ctrl.todo.done}"
-           ng-attr-for="task-{{$ctrl.todo.id}}"
-           ng-bind="$ctrl.todo.task">
+          ng-if="!$ctrl.editMode"
+          ng-class="{'done': $ctrl.todo.done}"
+          ng-bind="$ctrl.todo.task">
     </span>
-    <i class="todo-trash fa fa-lg fa-trash"
-          ng-click="$ctrl.onDelete()"
-          ng-class="">
+    <i class="edit fa fa-fw fa-btn fa-lg fa-edit"
+       ng-if="!$ctrl.editMode"
+       ng-click="$ctrl.edit()">
+    </i>
+    <i class="todo-trash fa fa-fw fa-btn fa-lg fa-trash"
+       ng-if="!$ctrl.editMode"
+       ng-click="$ctrl.onDelete()">
+    </i>
+
+
+    <!-- edit mode -->
+    <i class="edit fa fa-fw fa-lg fa-edit"
+       ng-if="$ctrl.editMode"
+       ng-click="$ctrl.edit()">
+    </i>
+    <input class="todo-task"
+           type="text"
+           ng-if="$ctrl.editMode"
+           ng-model="$ctrl.editTask">
+    <i class="edit-save fa fa-fw fa-btn fa-lg fa-check"
+       ng-if="$ctrl.editMode"
+       ng-click="$ctrl.saveEdit()">
+    </i>
+    <i class="edit-cancel fa fa-fw fa-btn fa-lg fa-times"
+       ng-if="$ctrl.editMode"
+       ng-click="$ctrl.cancelEdit()">
     </i>
 </div>

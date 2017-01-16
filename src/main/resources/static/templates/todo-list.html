@@ -5,7 +5,7 @@
     <ul class="todo-list-items">
 
         <li class="todo-list-item filters">
-            <i class="fa fa-lg fa-filter"></i>
+            <i class="fa fa-fw fa-lg fa-filter"></i>
             <div class="filter" ng-repeat="(name, filter) in $ctrl.filters">
                 <input ng-attr-id="filter-{{name}}" type="radio" ng-model="$ctrl.filter" ng-value="filter">
                 <label ng-attr-for="filter-{{name}}" class="filter-label" ng-bind="name"></label>
@@ -13,7 +13,7 @@
         </li>
         <li class="todo-list-item">
             <form class="todo">
-                <i class="fa fa-lg fa-plus-square-o"></i>
+                <i class="fa fa-fw fa-lg fa-plus-square-o"></i>
                 <input class="todo-task" type="text" ng-model="$ctrl.addTask" placeholder="What needs doing?">
                 <button ng-click="$ctrl.createTodo()" ng-disabled="!$ctrl.addTask">Add Task</button>
             </form>

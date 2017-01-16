@@ -6,18 +6,15 @@ body {
     min-width: 320px;
 }
 
-.todo-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
+.todo-list h1 {
+    text-align: center;
 }
 
 .todo-list-items {
     display: flex;
     flex-direction: column;
     align-content: flex-start;
-    align-items: flex-start;
+    align-items: stretch;
 
     list-style: none;
     padding: 0;
@@ -26,7 +23,6 @@ body {
 
 .todo-list-items > li {
     list-style:none;
-    width: 100%;
 
     border: 3px solid #DDDDDD;
     border-radius: 10px;
@@ -35,7 +31,7 @@ body {
 }
 
 .todo-list-items > li:hover {
-    border-color: #BBBBBB;
+    border-color: #CCCCCC;
 }
 
 .filters {
@@ -50,14 +46,9 @@ body {
     margin-left: 10px;
 }
 
-.list-add {
-
-}
-
 .todo {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
     align-items: center;
 }
 
@@ -69,17 +60,8 @@ body {
     padding: 0 5px;
 }
 
-.todo-check {
-    cursor: pointer;
-}
-
-.todo-check:hover {
-    color: green;
-}
-
 .todo-task {
     flex-grow: 1;
-
 }
 
 input.todo-task {
@@ -92,14 +74,46 @@ input.todo-task {
     font-style: italic;
 }
 
-.todo-trash {
-    cursor: pointer;
+.todo-check {
+    color: green;
 }
 
-.todo-trash:hover {
+.todo-check:hover {
+    color: #00B000;
+}
+
+.todo-trash {
     color: red;
 }
 
-i.fa {
-    min-width: 20px;
+.todo-trash:hover {
+    color: #BB0000;
+}
+
+.todo .edit {
+    color: dodgerblue;
+}
+
+.todo .edit:hover {
+    color: #1E70DF;
+}
+
+.todo .edit-save {
+    color: green;
+}
+
+.todo .edit-save:hover {
+    color: #00BB00;
+}
+
+.todo .edit-cancel {
+    color: red;
+}
+
+.todo .edit-cancel:hover {
+    color: #BB0000;
+}
+
+.fa.fa-btn {
+    cursor: pointer;
 }
