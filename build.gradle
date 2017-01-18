@@ -1,17 +1,34 @@
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE")
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
     }
 }
 
-group = 'jonquarfoth'
+plugins {
+    id "com.moowork.node" version "1.1.1"
+}
+
 
 apply plugin: 'java'
-apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'idea'
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-devtools")
+
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("com.h2database:h2")
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
+
+group = 'jonquarfoth'
 
 jar {
     baseName = 'angular-boot-sample'
@@ -29,12 +46,41 @@ bootRun {
     addResources = true
 }
 
-dependencies {
-    compile("org.springframework.boot:spring-boot-devtools")
+node {
+    version = '7.4.0'
+    download = true
+    workDir = file("${project.buildDir}/nodejs")
+    nodeModulesDir = file("${project.projectDir}/src/app")
+}
 
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    compile("com.h2database:h2")
+test {
+    exclude '**/*GebSpec*'
+}
 
-    testCompile 'org.springframework.boot:spring-boot-starter-test'
+task testBrowser(type: Test, dependsOn: 'assembleJs') {
+    include '**/*GebSpec*'
+
+    // Pass system properties through to the testBrowser task so we can pass in the 'geb.env' property to run tests
+    // in different browsers. Adapted from http://mrhaki.blogspot.com/2015/09/grails-goodness-passing-system.html
+    systemProperties System.properties
+}
+check.dependsOn('testBrowser')
+
+task testJs(type: NpmTask, dependsOn: 'npmInstall') {
+    inputs.dir('src/app/test/unit')
+    outputs.dir('src/app/test/reports')
+
+    args = ['run', 'test']
+}
+check.dependsOn('testJs')
+
+task assembleJs(type: NpmTask, dependsOn: 'npmInstall') {
+    inputs.dir('src/app')
+    outputs.dir('src/main/resources/static/')
+    args = ['run', 'build']
+}
+shadowJar.dependsOn('assembleJs')
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.1'
 }
