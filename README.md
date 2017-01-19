@@ -4,6 +4,7 @@ Angular 1.6/Spring Boot sample Todo app
 A simple todo list app where a user can add a list of things to do and check them off when completed.
 
 Frontend: Angular 1.6
+
 Backend: Spring Boot
 
 Angular code is in the `frontend` directory. NPM is used to manage dependencies and run tasks. Webpack is used to build and bundle the code. Connects to backend REST Api to access todos.
