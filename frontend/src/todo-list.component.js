@@ -1,12 +1,12 @@
 import angular from "angular"
 import todoApp from "./todo.app"
-import template from "./todo-list.html"
+import templateUrl from "./todo-list.html"
 
 export default angular
     .module(todoApp)
     .component('todoList', {
         controller: TodoListCtrl,
-        templateUrl: '/templates/todo-list.html'
+        templateUrl: templateUrl
     })
     .name;
 

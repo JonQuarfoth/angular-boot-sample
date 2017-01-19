@@ -1,6 +1,6 @@
 import angular from "angular"
 import todoApp from "./todo.app.js"
-import template from "./todo-item.html"
+import templateUrl from "./todo-item.html"
 
 angular
     .module(todoApp)
@@ -11,7 +11,7 @@ angular
             onDelete: '&'
         },
         controller: TodoItemCtrl,
-        templateUrl: 'todo-item.html'
+        templateUrl: templateUrl
     });
 
     TodoItemCtrl.$inject = [];

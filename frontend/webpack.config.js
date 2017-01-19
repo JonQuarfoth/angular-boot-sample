@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '../src/main/resources/static/assets'),
-    publicPath: '/assets',
+    publicPath: '/assets/',
     filename: '[name].bundle.js',
   },
   module: {
@@ -24,20 +24,18 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        loader: 'html-loader'
+        exclude: /index/,
+        loaders: ['ngtemplate-loader', 'html-loader']
       },
       {
         test: /\.css$/,
         loaders: ['style-loader', 'css-loader']
-      },
-
-    ],
-  },
-  devServer: {
-    contentBase: path.resolve('src'),  // New
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
+      filename: '../index.html',
       template: './index.html'
     })
   ]
