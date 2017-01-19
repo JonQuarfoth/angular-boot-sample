@@ -46,6 +46,10 @@ body {
     margin-left: 10px;
 }
 
+.add-task {
+    flex-grow: 1;
+}
+
 .todo {
     display: flex;
     flex-direction: row;

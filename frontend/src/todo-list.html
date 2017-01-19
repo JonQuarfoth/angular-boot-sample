@@ -14,8 +14,8 @@
         <li class="todo-list-item">
             <form class="todo">
                 <i class="fa fa-fw fa-lg fa-plus-square-o"></i>
-                <input class="todo-task" type="text" ng-model="$ctrl.addTask" placeholder="What needs doing?">
-                <button ng-click="$ctrl.createTodo()" ng-disabled="!$ctrl.addTask">Add Task</button>
+                <input id="add-task-input" class="add-task" type="text" ng-model="$ctrl.addTask" placeholder="What needs doing?">
+                <button id="add-task-button" ng-click="$ctrl.createTodo()" ng-disabled="!$ctrl.addTask">Add Task</button>
             </form>
         </li>
         <li ng-if="$ctrl.todos.length === 0" class="empty">
