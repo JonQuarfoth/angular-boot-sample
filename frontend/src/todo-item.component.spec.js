@@ -1,6 +1,6 @@
 import todoItem from "./todo-item.component"
 
-describe('Todo Item Component', function () {
+describe('Todo Item Component', function() {
 
     var todoItemCtrl,
         onDeleteSpy,
@@ -9,7 +9,7 @@ describe('Todo Item Component', function () {
 
     beforeEach(angular.mock.module(todoItem));
 
-    beforeEach(inject(function ($componentController, $rootScope) {
+    beforeEach(inject(function($componentController, $rootScope) {
         onDeleteSpy = jasmine.createSpy('onDeleteSpy');
         onUpdateSpy = jasmine.createSpy('onUpdateSpy');
         $scope = $rootScope.$new();
@@ -18,28 +18,32 @@ describe('Todo Item Component', function () {
             $scope: $scope
         };
         var bindings = {
-            todo: {id: 1, task: 'do something', done: true},
+            todo: {
+                id: 1,
+                task: 'do something',
+                done: true
+            },
             onUpdate: onUpdateSpy,
             onDelete: onDeleteSpy
         };
         todoItemCtrl = $componentController('todo', locals, bindings);
     }));
 
-    it('onUpdate() invokes update callback', function () {
+    it('onUpdate() invokes update callback', function() {
         todoItemCtrl.onUpdate();
         expect(onUpdateSpy).toHaveBeenCalled();
     });
 
-    it('onDelete() invokes delete callback', function () {
+    it('onDelete() invokes delete callback', function() {
         todoItemCtrl.onDelete();
         expect(onDeleteSpy).toHaveBeenCalled();
     });
 
-    it('toggleCheckbox marks item done and updates', function () {
+    it('toggleCheckbox marks item done and updates', function() {
         testCheckboxToggle(false);
     });
 
-    it('toggleCheckbox marks item incomplete and updates', function () {
+    it('toggleCheckbox marks item incomplete and updates', function() {
         testCheckboxToggle(true);
     });
 

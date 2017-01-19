@@ -56,16 +56,17 @@ task testJs(type: NpmTask, dependsOn: 'npmInstall') {
 
     args = ['run', 'test']
 }
-check.dependsOn('testJs')
 
 task assembleJs(type: NpmTask, dependsOn: 'npmInstall') {
     inputs.dir('frontend')
     outputs.dir('src/main/resources/static/')
     args = ['run', 'build']
 }
+
 bootRun.dependsOn('assembleJs')
-build.dependsOn('assembleJs')
+assemble.dependsOn('assembleJs')
+build.dependsOn(['assembleJs', 'testJs'])
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.1'
+    gradleVersion = '3.3'
 }
