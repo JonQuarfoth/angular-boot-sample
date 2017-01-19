@@ -1,9 +1,8 @@
 import angular from "angular"
-import todoApp from "./todo.app"
 import templateUrl from "./todo-list.html"
 
 export default angular
-    .module(todoApp)
+    .module('todoList.component', [])
     .component('todoList', {
         controller: TodoListCtrl,
         templateUrl: templateUrl

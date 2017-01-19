@@ -1,7 +1,4 @@
-import jasmine from "jasmine"
-import "angular-mocks"
-import todoApp from "./todo.app"
-import todoItem from "./todo-item.component"
+import todoList from "./todo-list.component"
 
 describe('Todo List Component', function () {
 
@@ -11,7 +8,7 @@ describe('Todo List Component', function () {
         $q,
         $rootScope;
 
-    beforeEach(angular.mock.module('todoApp'));
+    beforeEach(angular.mock.module(todoList));
 
     beforeEach(inject(function ($componentController, _$rootScope_, _$q_) {
         $rootScope = _$rootScope_;

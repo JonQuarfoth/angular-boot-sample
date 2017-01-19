@@ -52,14 +52,14 @@ node {
 }
 
 task testJs(type: NpmTask, dependsOn: 'npmInstall') {
-    inputs.dir('frontend/src')
+    inputs.dir('frontend')
 
     args = ['run', 'test']
 }
 check.dependsOn('testJs')
 
 task assembleJs(type: NpmTask, dependsOn: 'npmInstall') {
-    inputs.dir('frontend/src')
+    inputs.dir('frontend')
     outputs.dir('src/main/resources/static/')
     args = ['run', 'build']
 }

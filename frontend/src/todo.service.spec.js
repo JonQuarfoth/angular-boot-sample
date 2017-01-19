@@ -1,7 +1,4 @@
-import jasmine from "jasmine"
-import "angular-mocks"
-import todoApp from "./todo.app"
-import "./todo.service"
+import todoServiceModule from "./todo.service"
 
 describe('Todo Service', function() {
 
@@ -9,15 +6,15 @@ describe('Todo Service', function() {
         $httpBackend,
         backendData;
 
-    beforeEach(angular.mock.module(todoApp));
+    beforeEach(angular.mock.module(todoServiceModule));
 
     afterEach(function() {
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.verifyNoOutstandingRequest();
     });
 
-    beforeEach(inject(function($injector, _httpBackend_, _todoService_) {
-        $httpBackend = _httpBackend_;
+    beforeEach(inject(function($injector, _$httpBackend_, _todoService_) {
+        $httpBackend = _$httpBackend_;
         todoService = _todoService_;
 
         var todo1 = { id: 1, task: 'do something', done: true };

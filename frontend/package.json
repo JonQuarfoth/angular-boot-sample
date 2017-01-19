@@ -8,6 +8,7 @@
     "prebuild": "rimraf ../src/main/resources/static",
     "build": "webpack",
     "dev": "something",
+    "test:live": "karma start karma.conf.js",
     "test": "karma start karma.conf.js --single-run",
     "e2e": "protractor protractor.conf.js"
   },
@@ -29,6 +30,7 @@
     "karma": "1.4.0",
     "karma-chrome-launcher": "2.0.0",
     "karma-jasmine": "1.1.0",
+    "karma-webpack": "^2.0.1",
     "ngtemplate-loader": "^1.3.1",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",

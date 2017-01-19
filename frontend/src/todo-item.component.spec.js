@@ -1,6 +1,3 @@
-import jasmine from "jasmine"
-import "angular-mocks"
-import todoApp from "./todo.app"
 import todoItem from "./todo-item.component"
 
 describe('Todo Item Component', function () {
@@ -10,7 +7,7 @@ describe('Todo Item Component', function () {
         onUpdateSpy,
         $scope;
 
-    beforeEach(angular.mock.module(todoApp));
+    beforeEach(angular.mock.module(todoItem));
 
     beforeEach(inject(function ($componentController, $rootScope) {
         onDeleteSpy = jasmine.createSpy('onDeleteSpy');
@@ -25,7 +22,7 @@ describe('Todo Item Component', function () {
             onUpdate: onUpdateSpy,
             onDelete: onDeleteSpy
         };
-        todoItemCtrl = $componentController(todoItem, locals, bindings);
+        todoItemCtrl = $componentController('todo', locals, bindings);
     }));
 
     it('onUpdate() invokes update callback', function () {

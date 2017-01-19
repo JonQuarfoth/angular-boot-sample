@@ -1,9 +1,8 @@
 import angular from "angular"
-import todoApp from "./todo.app.js"
 import templateUrl from "./todo-item.html"
 
-angular
-    .module(todoApp)
+export default angular
+    .module('todoItem.component', [])
     .component('todo', {
         bindings: {
             todo: '<value',
@@ -12,7 +11,8 @@ angular
         },
         controller: TodoItemCtrl,
         templateUrl: templateUrl
-    });
+    })
+    .name;
 
     TodoItemCtrl.$inject = [];
 
