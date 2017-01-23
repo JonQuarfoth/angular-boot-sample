@@ -1,6 +1,6 @@
 .idea
-build
-.gradle
-gradle
 frontend/node_modules
+frontend/dist
+backend/build
+**/.gradle
 **/.DS_Store

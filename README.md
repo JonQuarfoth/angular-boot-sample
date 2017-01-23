@@ -6,25 +6,16 @@ A simple todo list app where a user can add a list of things to do and check the
 Frontend: Angular 1.6
 Backend: Spring Boot
 
-Angular code is in the `frontend` directory. NPM is used to manage dependencies and run tasks. Webpack is used to build and bundle the code. Connects to backend REST Api to access todos.
+The project is configured as a multiproject gradle build. The gradle build file in `frontend` wraps NPM tasks that do the actual work. The Gradle tasks are provided for easy interopability with Spring Boot.
 
-Spring Boot code is in the `src` directory. Gradle is used for building and running. Some Gradle tasks have been augmented to run frontend builds as well so that when you run or build your server, you'll get the latest code. Provides a REST API for Todo Items and saves to an in-memory database.
+Angular code is in the `frontend` directory. NPM is used to manage dependencies and run tasks. Webpack is used to build and bundle the code. Gradle tasks are also provided for the npm tasks for easier build integration with the spring boot app. A simple ui for managing items on a todo list.
 
-### Gradle tasks (run from project root)
-* `./gradlew bootRun`: Builds frontend dependencies, moves them into backend resources folder, runs server on http://localhost:8080
-* `.gradlew test`: run the app unit tests
+Spring Boot code is in the `backend` directory. Gradle is used for building and running. Provides a REST API for Todo Items and saves to an in-memory database.
 
-### npm tasks (run from the `frontend` directory)
-* `npm run build`: runs webpack - bundles code and outputs to the backend project's resources directory
-* `npm run test`: runs karma unit tests once
-* `npm run test:live`: runs karma unit tests, watches for changes and re-runs as necessary
-* `npm run webdriver`: starts a selenium server for end-to-end testing
-* `npm run e2e`
-
-### End-to-end tests
-Running the protractor e2e tests requires 3 processes running simultaneously.
-* `./gradlew bootRun` to run the app locally
-* `npm run webdriver` to start up the selenium server protractor connects to
-* `npm run e2e` to actually run  protractor tests.
-
-The e2e test assumes a blank slate (no todos in the database). You can terminate the bootRun and start it again to clear out the database.
+### Gradle tasks (from project root)
+* `./gradlew runJar`: creates and runs a runnable jar including all front and backend code
+* `./gradlew dev --parallel`: runs the frontend and backend development servers (without --parallel, only one will start)
+* `./gradlew build`: runs the frontend and backend compile and test tasks
+* `./gradlew bootRepackage`: creates a runnable jar containing frontend and backend code (in backend/build/libs)
+* `./gradlew e2eSetup --parallel`: run backend jar and webdriver selenium server in parallel
+* `./gradlew e2e` : run protractor e2e tests (relies on e2eSetup servers running locally)

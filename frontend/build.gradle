@@ -1,0 +1,46 @@
+plugins {
+    id "com.moowork.node" version "1.1.1"
+}
+
+node {
+    version = '7.4.0'
+    download = true
+}
+
+task assemble(type: NpmTask, dependsOn: 'npmInstall') {
+	args = ['run', 'build']
+}
+
+task build(type: NpmTask, dependsOn: 'npmInstall') {
+	args = ['run', 'build']
+}
+build.dependsOn('test')
+
+task clean(type: NpmTask, dependsOn: 'npmInstall') {
+	args = ['run', 'clean']
+}
+
+task dev(type: NpmTask, dependsOn: 'npmInstall') {
+	group = 'application'
+	args = ['run', 'dev']
+}
+
+task test(type: NpmTask, dependsOn: 'npmInstall') {
+    group = 'verification'
+    args = ['run', 'test']
+}
+
+task testLive(type: NpmTask, dependsOn: 'npmInstall') {
+    group = 'verification'
+    args = ['run', 'test:live']
+}
+
+task e2eSetup(type: NpmTask, dependsOn: 'npmInstall') {
+    group = 'verification'
+    args = ['run', 'webdriver']
+}
+
+task e2e(type: NpmTask, dependsOn: 'npmInstall') {
+	group = 'verification'
+    args = ['run', 'e2e']
+}

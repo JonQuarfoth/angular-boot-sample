@@ -1,0 +1,57 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'idea'
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("com.h2database:h2")
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
+
+group = 'jonquarfoth'
+version = '1.0.1'
+
+jar {
+    baseName = 'angular-boot-sample'
+    version = "${version}"
+    metaInf {
+        from('../frontend/dist')
+        into('resources')
+    }
+}
+jar.dependsOn(':frontend:assemble')
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+task runJar(type: JavaExec, dependsOn: 'bootRepackage') {
+    group = 'application'
+    description = 'create a runnable jar using bootRepackage and then run it'
+    main = '-jar'
+    args = ["build/libs/angular-boot-sample-${version}.jar"]
+}
+
+task dev(type: DefaultTask, dependsOn: 'bootRun') {
+    group = 'application'
+    description = 'convenience task for launching frontend and backend dev servers in parallel'
+}
+
+task e2eSetup(type: DefaultTask, dependsOn: 'runJar') {
+    group = 'verification'
+    description = 'convenience task for launching frontend and backend e2e servers in parallel'
+}

@@ -8,12 +8,13 @@ module.exports = {
         index: './index.js',
     },
     output: {
-        path: path.resolve(__dirname, '../src/main/resources/static/assets'),
+        path: path.resolve('dist/assets'),
         publicPath: '/assets/',
         filename: '[name].bundle.js',
     },
     module: {
-        loaders: [{
+        loaders: [
+            {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader',
@@ -31,6 +32,15 @@ module.exports = {
                 loaders: ['style-loader', 'css-loader']
             }
         ]
+    },
+    devServer: {
+        contentBase: path.resolve('dist'),
+        port: 9090,
+        proxy: {
+            '/todos': {
+                target: 'http://localhost:8080'
+            }
+        }
     },
     plugins: [
         new HtmlWebpackPlugin({

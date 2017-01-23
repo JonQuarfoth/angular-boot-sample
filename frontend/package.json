@@ -5,10 +5,12 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "prebuild": "rimraf ../src/main/resources/static",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
     "build": "webpack",
     "test": "karma start karma.conf.js --single-run",
     "test:live": "karma start karma.conf.js",
+    "dev": "webpack-dev-server",
     "webdriver": "webdriver-manager update && webdriver-manager start",
     "e2e": "protractor protractor.conf.js"
   },
@@ -36,7 +38,7 @@
     "rimraf": "2.5.4",
     "style-loader": "0.13.1",
     "webpack": "2.2.0",
-    "webpack-dev-server": "1.16.2",
+    "webpack-dev-server": "^1.16.2",
     "webpack-merge": "2.4.0"
   }
 }
