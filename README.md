@@ -21,4 +21,14 @@ This was developed and tested in Mac OSX, and will likely not work in windows du
 * `./gradlew build`: runs the frontend and backend compile and test tasks
 * `./gradlew bootRepackage`: creates a runnable jar containing frontend and backend code (in backend/build/libs)
 * `./gradlew e2eSetup --parallel`: run backend jar and webdriver selenium server in parallel
-* `./gradlew e2e` : run protractor e2e tests (relies on e2eSetup servers running locally)
+* `./gradlew e2e` : run protractor e2e tests (relies on e2eSetup servers running locally in a different terminal instance)
+
+###Troubleshooting
+Sometimes gradle won't run tasks if it thinks nothing has changed since the last time it has run. This is mostly a problem with the frontend tasks. If this happens, frontend tasks can be run using npm directly in the `frontend` directory.
+* `npm run clean`: clean the dist 
+* `npm run build`: run webpack
+* `npm run test`: run karma/jasmine
+* `npm run test:live`: run karma/jasmine and watch for changes
+* `npm run dev`: run the webpack dev server so you can see ui changes on reload without needing to restart the backend server.
+* `npm run webdriver`: run the selenium webdriver server needed for e2e tests
+* `npm run e2e`: run the protractor e2e tests
