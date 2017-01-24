@@ -11,9 +11,11 @@ Angular code is in the `frontend` directory. NPM is used to manage dependencies 
 
 Spring Boot code is in the `src` directory. Gradle is used for building and running. Some Gradle tasks have been augmented to run frontend builds as well so that when you run or build your server, you'll get the latest code. Provides a REST API for Todo Items and saves to an in-memory database.
 
+This was developed on Mac OSX and is untested in Windows
+
 ### Gradle tasks (run from project root)
 * `./gradlew bootRun`: Builds frontend dependencies, moves them into backend resources folder, runs server on http://localhost:8080
-* `.gradlew test`: run the app unit tests
+* `./gradlew test`: run the app unit tests
 
 ### npm tasks (run from the `frontend` directory)
 * `npm run build`: runs webpack - bundles code and outputs to the backend project's resources directory
