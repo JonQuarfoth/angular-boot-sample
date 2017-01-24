@@ -1,6 +1,5 @@
 .idea
 build
 .gradle
-gradle
 frontend/node_modules
 **/.DS_Store
