@@ -4,6 +4,7 @@ Angular 1.6/Spring Boot sample Todo app
 A simple todo list app where a user can add a list of things to do and check them off when completed.
 
 Frontend: Angular 1.6
+
 Backend: Spring Boot
 
 The project is configured as a multiproject gradle build. The gradle build file in `frontend` wraps NPM tasks that do the actual work. The Gradle tasks are provided for easy interopability with Spring Boot.
