@@ -13,7 +13,9 @@ Angular code is in the `frontend` directory. NPM is used to manage dependencies 
 
 Spring Boot code is in the `backend` directory. Gradle is used for building and running. Provides a REST API for Todo Items and saves to an in-memory database.
 
-This was developed and tested in Mac OSX, and will likely not work in windows due to dependencies being unavailable.
+This was developed and tested in Mac OSX, and should work fine there. Linux is untested, but should work fine.
+
+Windows 7 was lightly tested. Use just `gradlew` instead of `./gradlew` in windows. Everything should work, at least the first time you issue a gradle command. I had problems with gradle not properly shutting down server tasks when the terminal process was ended. This would cause issues on subsequent tasks until I opened the Task Manager and force closed all the running java processes. So, run it in windows at your own risk, and be prepared to do some process cleanup if you do.
 
 ### Gradle tasks (from project root)
 * `./gradlew runJar`: builds a deployable jar containing frontend and backend code, available at http://localhost:8080
@@ -25,7 +27,7 @@ This was developed and tested in Mac OSX, and will likely not work in windows du
 
 ###Troubleshooting
 Sometimes gradle won't run tasks if it thinks nothing has changed since the last time it has run. This is mostly a problem with the frontend tasks. If this happens, frontend tasks can be run using npm directly in the `frontend` directory.
-* `npm run clean`: clean the dist 
+* `npm run clean`: clean the dist directory
 * `npm run build`: run webpack
 * `npm run test`: run karma/jasmine
 * `npm run test:live`: run karma/jasmine and watch for changes
