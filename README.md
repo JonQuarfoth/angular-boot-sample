@@ -16,8 +16,8 @@ Spring Boot code is in the `backend` directory. Gradle is used for building and 
 This was developed and tested in Mac OSX, and will likely not work in windows due to dependencies being unavailable.
 
 ### Gradle tasks (from project root)
-* `./gradlew runJar`: creates and runs a runnable jar including all front and backend code
-* `./gradlew dev --parallel`: runs the frontend and backend development servers (without --parallel, only one will start)
+* `./gradlew runJar`: builds a deployable jar containing frontend and backend code, available at http://localhost:8080
+* `./gradlew dev --parallel`: runs webpack dev server, proxying backend requests to the backend server. webpack dev server will be available at http://localhost:9090
 * `./gradlew build`: runs the frontend and backend compile and test tasks
 * `./gradlew bootRepackage`: creates a runnable jar containing frontend and backend code (in backend/build/libs)
 * `./gradlew e2eSetup --parallel`: run backend jar and webdriver selenium server in parallel
