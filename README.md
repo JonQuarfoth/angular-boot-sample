@@ -12,6 +12,8 @@ Angular code is in the `frontend` directory. NPM is used to manage dependencies 
 
 Spring Boot code is in the `backend` directory. Gradle is used for building and running. Provides a REST API for Todo Items and saves to an in-memory database.
 
+This was developed and tested in Mac OSX, and will likely not work in windows due to dependencies being unavailable.
+
 ### Gradle tasks (from project root)
 * `./gradlew runJar`: creates and runs a runnable jar including all front and backend code
 * `./gradlew dev --parallel`: runs the frontend and backend development servers (without --parallel, only one will start)
