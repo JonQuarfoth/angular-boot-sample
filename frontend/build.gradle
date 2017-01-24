@@ -7,40 +7,44 @@ node {
     download = true
 }
 
-task assemble(type: NpmTask, dependsOn: 'npmInstall') {
+task npmInstallNoOptional(type: NpmTask) {
+  args = ['install', '--no-optional']
+}
+
+task assemble(type: NpmTask, dependsOn: 'npmInstallNoOptional') {
 	args = ['run', 'build']
 }
 
-task build(type: NpmTask, dependsOn: 'npmInstall') {
+task build(type: NpmTask, dependsOn: 'npmInstallNoOptional') {
 	args = ['run', 'build']
 }
 build.dependsOn('test')
 
-task clean(type: NpmTask, dependsOn: 'npmInstall') {
+task clean(type: NpmTask, dependsOn: 'npmInstallNoOptional') {
 	args = ['run', 'clean']
 }
 
-task dev(type: NpmTask, dependsOn: 'npmInstall') {
+task dev(type: NpmTask, dependsOn: 'npmInstallNoOptional') {
 	group = 'application'
 	args = ['run', 'dev']
 }
 
-task test(type: NpmTask, dependsOn: 'npmInstall') {
+task test(type: NpmTask, dependsOn: 'npmInstallNoOptional') {
     group = 'verification'
     args = ['run', 'test']
 }
 
-task testLive(type: NpmTask, dependsOn: 'npmInstall') {
+task testLive(type: NpmTask, dependsOn: 'npmInstallNoOptional') {
     group = 'verification'
     args = ['run', 'test:live']
 }
 
-task e2eSetup(type: NpmTask, dependsOn: 'npmInstall') {
+task e2eSetup(type: NpmTask, dependsOn: 'npmInstallNoOptional') {
     group = 'verification'
     args = ['run', 'webdriver']
 }
 
-task e2e(type: NpmTask, dependsOn: 'npmInstall') {
+task e2e(type: NpmTask, dependsOn: 'npmInstallNoOptional') {
 	group = 'verification'
     args = ['run', 'e2e']
 }
